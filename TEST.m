@@ -1,5 +1,7 @@
 clc, clear, close all;
 
+clc, clear, close all;
+
 au = 149597870; %km
 
 global sun
@@ -19,15 +21,11 @@ uranus = struct('R',25559,'mu',5794556.4,'a',19.19126*au,'e',0);
 uranus.vc = sqrt(sun.mu/uranus.a);
 
 global rp_E1
-global rp_E2
-global rp_J
 global rp_U
 
 rp_E1 = 500 + earth.R; %km
-rp_E2 = 1000 + earth.R; %km
-rp_J = 30000 + jupiter.R; %km
-rp_U = 10000 + uranus.R; %km
+rp_U = 3000 + uranus.R; %km
 
-x0 = [10 1 yr2sec(0.9) 4.2 0];
+x0 = [1 15 yr2sec(.45) 1.5 1.2*earth.R 1.2*jupiter.R];
 
-output = EJGAtraj(x0, "dv");
+output = EJGAtraj(x0, "dv",1);
